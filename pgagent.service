@@ -1,0 +1,13 @@
+[Unit]
+Description=pgAgent job scheduler
+After=network.target
+
+[Service]
+Type=simple
+User=imsuser
+Environment=PGPASSFILE=/home/imsuser/.pgpass
+ExecStart=/usr/bin/pgagent_17 "host=10.10.11.66 dbname=imscdr user=imsuser"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
